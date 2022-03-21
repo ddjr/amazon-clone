@@ -12,9 +12,7 @@ function App() {
   useEffect(() => {
     //wil only run once when the app loads..
     auth.onAuthStateChanged(authUser => {
-      console.log("the user is >>>", authUser)
       if(authUser) {
-        //the user just logined in / the user was logged in({
         dispatch({
           type: "SET_USER",
           user: authUser
