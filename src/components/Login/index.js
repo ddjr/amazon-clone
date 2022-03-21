@@ -1,19 +1,52 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../../media/logo2.png'
+import { auth, db } from '../../firebase.js'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import './Login.scss'
 function Login() {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
     const signin = e => {
-        e.preventDefault()
-        //fancy firbase login
+        e.preventDefault() 
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log("user: ", user)
+            navigate('/')
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode, errorMessage)
+            // ..
+          });
     }
-    const register = e => {
+
+    async function register(e) {
         e.preventDefault()
-        //fancy firebase register
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user)
+            navigate('/')
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorCode, errorMessage)
+            // ..
+          });
+        
     }
+
   return (
     <div className='login'>
         <Link to="/">
@@ -22,11 +55,11 @@ function Login() {
         <div className='login__container'>
             <h1>Sign In</h1>
             <form>
-                <h5>E-mail</h5>
+                <label>E-mail</label>
                 <input type="text" value={email} 
                     onChange= { e => setEmail(e.target.value) }
                 />
-                <h5>Password</h5>
+                <label>Password</label>
                 <input type="password" value={password}
                      onChange= { e => setPassword(e.target.value) }
                 />

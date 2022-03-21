@@ -30,8 +30,11 @@
         margin-bottom: 10px;
         background-color: white;
         width: 98%;
+        &:focus {
+          outline: black;
+        }
       }
-      h5 {
+      label {
         margin-bottom: 5px;
       }
     }
