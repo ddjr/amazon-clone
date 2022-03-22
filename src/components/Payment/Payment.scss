@@ -1,5 +1,8 @@
 .payment {
   background-color: white;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   &__container {
     h1 {
       text-align: center;
@@ -25,17 +28,28 @@
   &__items,
   &__details {
     flex: 0.8;
+    form {
+      max-width: 400px;
+    }
   }
   &__cardElement {
     padding-bottom: 10px;
-    width: 400px;
   }
   &__priceContainer {
     h3 {
       padding-bottom: 10px;
     }
     button {
-      padding: 1px 5px 1px 5px;
+      padding: 2px 5px 2px 5px;
+      width: 100%;
+      background: #f0c14b;
+      border-radius: 2px;
+      width: 100%;
+      font-weight: 600;
+      border: 1px solid;
+      margin-top: 10px;
+      border-color: #a88734 #9c7e31 #846a29;
+      color: #111;
     }
   }
 }
