@@ -1,7 +1,7 @@
+import './Product.scss';
 import React from 'react'
 import { v4 as uuid } from 'uuid';
 import { useStateValue } from '../../StateProvider';
-import './Product.scss'
 
 
 function Product({ id, title, image, price, rating }) {

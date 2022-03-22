@@ -3,6 +3,12 @@ export const initialState = {
     user: null
 }
 
+export const getBasketTotal = (basket) => {
+    let total = 0;
+    basket?.map((item, _) => ( total += item.price ))
+    return total;
+}
+
 const reducer = (state, action) => {
     console.log(action)
     switch(action.type) {
